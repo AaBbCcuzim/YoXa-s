@@ -1,25 +1,488 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>My first html</title>
-	</head>
-	<body>
-		<header>
-			<h1 style="color:blue;text-align:center">AaBbCcuzim's Page</h1>
-		</header>
-		<nav>
-		</nav>
-		<main>
-			<p><strong>dir</strog></p>
-			<ul>
-				<li><a href="https://github.com/" title="https://github.com/">Github</a></li>
-				<li><a href="https://www.baidu.com/" title="https://www.baidu.com/">Baidu</a></li>
-				<li><a href="https://pass.sdu.edu.cn/cas/login?service=https%3A%2F%2Fservice.sdu.edu.cn%2Ftp_up%2Fview%3Fm%3Dup#act=portal/viewhome" title="山东大学统一身份认证平台">Shandong university</a></li>
-			</ul>
-		</main>
-		<footer>
-			<p style="text-align:center">finall explation due to articler</p>
-		</footer>
-	</body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .head {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 40px;
+            z-index: 1;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .left {
+            position: fixed;
+            top: 0;
+            left: 80px;
+            width: 250px;
+            height: 980px;
+            background-color: white;
+            z-index: 2;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .left .self_photo {
+            position: relative;
+            left: 85px;
+            top: 40px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+            transition: all .5s;
+            background-image: url();
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .left .self_photo:hover {
+            width: 180px;
+            height: 180px;
+            left: 35px;
+        }
+
+        .left .self_id {
+            position: relative;
+            top: 60px;
+            text-align: center;
+            font-size: 25px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .right {
+            position: absolute;
+            top: 200px;
+            left: 1550px;
+            width: 250px;
+            height: 800px;
+            background-color: white;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .body {
+            width: 1100px;
+            height: 3000px;
+            margin: 40px auto;
+        }
+
+        .body .first_block {
+            position: relative;
+            top: 20px;
+            width: 100%;
+            height: 100px;
+            transition: all .5s;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .body .first_block:hover {
+            height: 200px;
+        }
+
+
+
+        .body .first_block:hover .clock {
+            top: 25px;
+            height: 150px;
+        }
+
+        .body .first_block:hover .self_condition {
+            top: 25px;
+            height: 150px;
+        }
+
+
+
+        .body .first_block .clock {
+            position: absolute;
+            overflow: hidden;
+            left: 50px;
+            top: 30px;
+            width: 150px;
+            height: 40px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+            transition: all .5s;
+        }
+
+        .body .first_block .clock .font {
+            font-size: 23px;
+            text-align: center;
+
+        }
+
+        .body .first_block .clock .hour {
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            transition: all .5s;
+        }
+
+        .body .first_block .clock .minute {
+            position: absolute;
+            left: 60px;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            transition: all .5s;
+        }
+
+        .body .first_block .clock .second {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            transition: all .5s;
+        }
+
+        .body .first_block .clock .round_clock {
+            position: absolute;
+            top: 50px;
+            left: 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, .9);
+            transition: all .5s;
+        }
+
+        .body .first_block .clock .round_border {
+            position: absolute;
+            top: 45px;
+            left: 10px;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            transition: all .5s;
+            z-index: -1;
+            background-image: -webkit-linear-gradient(left, red, orange, yellow, green, blue, purple, pink);
+            background-size: 500%;
+            animation: border_color 20s linear 0s infinite normal
+        }
+
+        @keyframes border_color {
+            from {
+                background-position: 0 50%;
+            }
+
+            to {
+                background-position: 100% 50%;
+            }
+        }
+
+        .body .first_block .clock .round_clock .point {
+            position: absolute;
+            top: 58px;
+            left: 58px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: rgb(77, 71, 71);
+        }
+
+        .body .first_block .clock .round_clock .hour_line {
+            position: absolute;
+            top: 58px;
+            left: 58px;
+            width: 25px;
+            height: 4px;
+            border-radius: 40%;
+            background-color: rgb(100, 94, 94);
+            transform-origin: 2px 2px;
+        }
+
+        .body .first_block .clock .round_clock .minute_line {
+            position: absolute;
+            top: 58px;
+            left: 58px;
+            width: 40px;
+            height: 4px;
+            border-radius: 40%;
+            background-color: rgb(139, 132, 132);
+            transform-origin: 2px 2px;
+        }
+
+        .body .first_block .clock .round_clock .second_line {
+            position: absolute;
+            top: 58px;
+            left: 58px;
+            width: 50px;
+            height: 4px;
+            border-radius: 40%;
+            background-color: rgb(117, 106, 106);
+            transform-origin: 2px 2px;
+        }
+
+
+        .body .first_block .self_condition {
+            position: absolute;
+            overflow: hidden;
+            left: 250px;
+            top: 30px;
+            width: 300px;
+            height: 40px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+            transition: all .5s;
+        }
+
+        .body .first_block .self_condition .heart {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 250px;
+            height: 40px;
+        }
+
+        .body .first_block .self_condition .heart .bar .percent {
+            background-color: red;
+        }
+
+        .body .first_block .self_condition .happy {
+            position: absolute;
+            left: 50px;
+            top: 40px;
+            width: 250px;
+            height: 40px;
+        }
+
+        .body .first_block .self_condition .happy .bar .percent {
+            background-color: rgb(16, 243, 243);
+        }
+
+        .body .first_block .self_condition .sad {
+            position: absolute;
+            left: 50px;
+            top: 80px;
+            width: 250px;
+            height: 40px;
+        }
+
+        .body .first_block .self_condition .sad .bar .percent {
+            background-color: rgb(240, 237, 60);
+        }
+
+        .body .first_block .self_condition .bar {
+            position: absolute;
+            left: 5px;
+            top: 17px;
+            width: 200px;
+            height: 6px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .body .first_block .self_condition .bar .percent {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 6px;
+            border-radius: 5px;
+        }
+
+        .body .first_block .self_condition .button {
+            position: absolute;
+            left: 0px;
+            top: 14px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgb(192, 197, 202);
+            box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .body .first_block .self_condition .content {
+            position: absolute;
+            left: 215px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head"></div>
+    <div class="left">
+        <div class="self_photo"></div>
+        <div class="self_id">aabbccuzim</div>
+    </div>
+    <div class="right"></div>
+    <div class="body">
+        <div class="first_block">
+            <div class="clock">
+                <div class="hour font"></div>
+                <div class="minute font"></div>
+                <div class="second font"></div>
+                <div class="round_clock">
+                    <div class="point"></div>
+                    <div class="hour_line"></div>
+                    <div class="minute_line"></div>
+                    <div class="second_line"></div>
+                </div>
+                <div class="round_border"></div>
+            </div>
+            <div class="self_condition">
+                <div class="heart">
+                    <div class="bar">
+                        <div class="percent"></div>
+                    </div>
+                    <div class="button"></div>
+                    <div class="content"></div>
+                </div>
+                <div class="happy">
+                    <div class="bar">
+                        <div class="percent"></div>
+                    </div>
+                    <div class="button"></div>
+                    <div class="content"></div>
+                </div>
+                <div class="sad">
+                    <div class="bar">
+                        <div class="percent"></div>
+                    </div>
+                    <div class="button"></div>
+                    <div class="content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot"></div>
+
+    <script>
+        let right = document.querySelector('.right');
+        let first_block = document.querySelector('.first_block');
+        let self_photo = document.querySelector('.self_photo');
+        let clock = document.querySelector('.clock');
+        let hour = clock.querySelector('.hour');
+        let minute = clock.querySelector('.minute');
+        let second = clock.querySelector('.second');
+        let round_clock = clock.querySelector('.round_clock');
+        let round_border = clock.querySelector('.round_border');
+        let hour_line = clock.querySelector('.hour_line');
+        let minute_line = clock.querySelector('.minute_line');
+        let second_line = clock.querySelector('.second_line');
+        let self_condition = document.querySelector('.self_condition');
+        let heart_button = document.querySelector('.heart').querySelector('.button');
+        let heart_bar = document.querySelector('.heart').querySelector('.percent');
+        let heart_content = document.querySelector('.heart').querySelector('.content');
+        let happy_button = document.querySelector('.happy').querySelector('.button');
+        let happy_bar = document.querySelector('.happy').querySelector('.percent');
+        let happy_content = document.querySelector('.happy').querySelector('.content');
+        let sad_button = document.querySelector('.sad').querySelector('.button');
+        let sad_bar = document.querySelector('.sad').querySelector('.percent');
+        let sad_content = document.querySelector('.sad').querySelector('.content');
+
+        window.addEventListener('load', function (e) {
+            show_now_time();
+            line_do();
+            // 接口
+            // heart_button.style.left = nx + 'px';
+            // heart_bar.style.width = nx + 'px';
+            // happy_button.style.left = nx + 'px';
+            // happy_bar.style.width = nx + 'px';
+            // sad_button.style.left = nx + 'px';
+            // sad_bar.style.width = nx + 'px';
+            // heart_content.innerHTML = Math.round(nx * 100.0 / 200);
+            // happy_content.innerHTML = Math.round(nx * 100.0 / 200);
+            // sad_content.innerHTML = Math.round(nx * 100.0 / 200);
+        });
+
+        first_block.addEventListener('mouseover', function (e) {
+            hour.style.top = -35 + 'px';
+            minute.style.top = -35 + 'px';
+            second.style.top = -35 + 'px';
+            round_clock.style.top = 15 + 'px';
+            round_border.style.top = 10 + 'px';
+        });
+        first_block.addEventListener('mouseout', function (e) {
+            hour.style.top = 5 + 'px';
+            minute.style.top = 5 + 'px';
+            second.style.top = 5 + 'px';
+            round_clock.style.top = 50 + 'px';
+            round_border.style.top = 45 + 'px';
+        });
+        heart_button.addEventListener('mousedown', function (e) {
+            let x = e.clientX;
+            let left = this.offsetLeft;
+            document.onmousemove = e => {
+                let nx = e.clientX - x + left;
+                if (nx > 200) nx = 200;
+                else if (nx < 0) nx = 0;
+                this.style.left = nx + 'px';
+                heart_bar.style.width = nx + 'px';
+                heart_content.innerHTML = Math.round(nx * 100.0 / 200);
+                console.log(nx);
+            };
+            document.onmouseup = () => {
+                document.onmousemove = null;
+            };
+        });
+        happy_button.addEventListener('mousedown', function (e) {
+            let x = e.clientX;
+            let left = this.offsetLeft;
+            document.onmousemove = e => {
+                let nx = e.clientX - x + left;
+                if (nx > 200) nx = 200;
+                else if (nx < 0) nx = 0;
+                this.style.left = nx + 'px';
+                happy_bar.style.width = nx + 'px';
+                happy_content.innerHTML = Math.round(nx * 100.0 / 200);
+            };
+            document.onmouseup = () => {
+                document.onmousemove = null;
+            };
+        });
+        sad_button.addEventListener('mousedown', function (e) {
+            let x = e.clientX;
+            let left = this.offsetLeft;
+            document.onmousemove = e => {
+                let nx = e.clientX - x + left;
+                if (nx > 200) nx = 200;
+                else if (nx < 0) nx = 0;
+                this.style.left = nx + 'px';
+                sad_bar.style.width = nx + 'px';
+                sad_content.innerHTML = Math.round(nx * 100.0 / 200);
+            };
+            document.onmouseup = () => {
+                document.onmousemove = null;
+            };
+        });
+        function show_now_time() {
+            let date = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            hour.innerHTML = h;
+            minute.innerHTML = m;
+            second.innerHTML = s;
+        }
+        function line_do() {
+            let date = new Date();
+            let s = date.getSeconds();
+            let m = date.getMinutes() + s / 60;
+            let h = date.getHours() + m / 60;
+            hour_line.style.transform = 'rotate(' + (h * 30 + 270) + 'deg)';
+            minute_line.style.transform = 'rotate(' + (m * 6 + 270) + 'deg)';
+            second_line.style.transform = 'rotate(' + (s * 6 + 270) + 'deg)';
+        }
+        setInterval(show_now_time, 1000);
+        setInterval(line_do, 1000);
+    </script>
+</body>
+
 </html>
